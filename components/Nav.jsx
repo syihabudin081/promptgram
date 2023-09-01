@@ -38,7 +38,7 @@ const Nav = () => {
       <div className="sm:flex hidden">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <Link href="/create-prompt" className="black_btn">
+            <Link href="/createprompt" className="black_btn">
               Create Post
             </Link>
 
@@ -75,42 +75,43 @@ const Nav = () => {
         )}
       </div>
 
-      {/* Mobile Navigation */}
-      <div className="sm:hidden flex relative">
+     
+        {/* Mobile Navigation */}
+        <div className='sm:hidden flex relative'>
         {session?.user ? (
-          <div className="flex">
+          <div className='flex'>
             <Image
-              src="/assets/images/profile.svg"
+              src={session?.user.image}
               width={37}
               height={37}
-              className="rounded-full"
-              alt="profile"
+              className='rounded-full'
+              alt='profile'
               onClick={() => setToggleDropdown(!toggleDropdown)}
             />
 
             {toggleDropdown && (
-              <div className="dropdown">
+              <div className='dropdown'>
                 <Link
-                  to="/profile"
-                  className="dropdown_link"
+                  href='/profile'
+                  className='dropdown_link'
                   onClick={() => setToggleDropdown(false)}
                 >
                   My Profile
                 </Link>
                 <Link
-                  href="/create-prompt"
-                  className="dropdown_link"
+                  href='/create-prompt'
+                  className='dropdown_link'
                   onClick={() => setToggleDropdown(false)}
                 >
                   Create Prompt
                 </Link>
                 <button
-                  type="button"
+                  type='button'
                   onClick={() => {
                     setToggleDropdown(false);
                     signOut();
                   }}
-                  className="mt-5 w-full black_btn"
+                  className='mt-5 w-full black_btn'
                 >
                   Sign Out
                 </button>
@@ -122,12 +123,12 @@ const Nav = () => {
             {providers &&
               Object.values(providers).map((provider) => (
                 <button
-                  type="button"
+                  type='button'
                   key={provider.name}
                   onClick={() => {
                     signIn(provider.id);
                   }}
-                  className="black_btn"
+                  className='black_btn'
                 >
                   Sign in
                 </button>
