@@ -24,10 +24,10 @@ const handler = NextAuth({
       try {
         await connectToDatabase();
 
-        // check if user already exists
+        // check if user exists or no
         const userExists = await User.findOne({ email: profile.email });
 
-        // if not, create a new document and save user in MongoDB
+        // if not, create a new document
         if (!userExists) {
           await User.create({
             email: profile.email,
